@@ -10,7 +10,7 @@
 
 class Edge {
 public:
-    Edge(Vertex* first, Vertex* second, int weight);
+    Edge(Vertex* first, Vertex* second, int weight = 0);
 
     Vertex* first;
     Vertex* second;
