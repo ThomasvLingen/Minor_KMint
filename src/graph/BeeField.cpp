@@ -9,7 +9,7 @@ BeeField::BeeField()
 : _bg_image(this->mApplication->LoadTexture("map.png"))
 {
     this->_init_field();
-    this->beekeeper = new BeeKeeper(*this, {300,300});
+    this->beekeeper = new BeeKeeper(*this, CoordinateDouble {300,300});
     this->mApplication->AddRenderable(this);
     this->mApplication->AddRenderable(this->beekeeper);
 }

@@ -5,25 +5,20 @@
 #ifndef MINOR_KMINT_COORDINATEDOUBLE_HPP
 #define MINOR_KMINT_COORDINATEDOUBLE_HPP
 
+class VectorDouble;
+
 struct CoordinateDouble {
     double x;
     double y;
 
-    CoordinateDouble operator+(const CoordinateDouble& other)
-    {
-        return CoordinateDouble {
-            this->x + other.x,
-            this->y + other.y
-        };
-    }
+    CoordinateDouble(double x, double y);
+    CoordinateDouble(VectorDouble& other);
 
-    CoordinateDouble operator-(const CoordinateDouble& other)
-    {
-        return CoordinateDouble {
-            this->x - other.x,
-            this->y - other.y
-        };
-    }
+    CoordinateDouble operator+(VectorDouble& other);
+    CoordinateDouble operator+(const CoordinateDouble& other);
+    CoordinateDouble operator-(const CoordinateDouble& other);
+    bool operator==(const VectorDouble& other);
+    bool operator!=(const VectorDouble& other);
 };
 
 #endif //MINOR_KMINT_COORDINATEDOUBLE_HPP

@@ -5,6 +5,21 @@
 #include "VectorDouble.hpp"
 #include <cmath>
 
+
+VectorDouble::VectorDouble(double x, double y)
+: x(x)
+, y(y)
+{
+
+}
+
+VectorDouble::VectorDouble(CoordinateDouble obj)
+: x(obj.x)
+, y(obj.y)
+{
+
+}
+
 VectorDouble VectorDouble::normalise()
 {
     return this->truncate(1);

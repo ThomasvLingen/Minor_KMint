@@ -8,21 +8,30 @@
 
 #include "../../IGameObject.h"
 #include "../../graph/CoordinateInt.hpp"
+#include "../../graph/CoordinateDouble.hpp"
+#include "../../Math/VectorDouble.hpp"
 
 
 class BeeField;
 
 class BeeKeeper : public IGameObject {
 public:
-    BeeKeeper(BeeField& field, CoordinateInt current_position);
+    BeeKeeper(BeeField& field, CoordinateDouble current_position);
 
     BeeField& field;
-    CoordinateInt current_position;
-    CoordinateInt target_position;
+    CoordinateDouble current_position;
+    CoordinateDouble target_position;
 
     virtual void Draw() override;
 
     virtual void Update(float deltaTime) override;
+
+private:
+    const int speed = 10;
+
+    void _step_towards_target();
+    void _apply_vector(VectorDouble to_apply);
+    VectorDouble _get_step_vector();
 };
 
 

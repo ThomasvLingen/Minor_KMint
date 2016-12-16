@@ -6,7 +6,12 @@
 #define MINOR_KMINT_VECTORDOUBLE_HPP
 
 
+#include "../graph/CoordinateDouble.hpp"
+
 struct VectorDouble {
+    VectorDouble(double x, double y);
+    VectorDouble(CoordinateDouble obj);
+
     double x;
     double y;
 
