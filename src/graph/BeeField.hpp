@@ -8,19 +8,19 @@
 
 #include "../IGameObject.h"
 #include "Graph.hpp"
+#include "../GameObjects/BeeKeeper/BeeKeeper.hpp"
 
 class BeeField : public IGameObject {
 public:
     BeeField();
 
-private:
     virtual void Draw() override;
-
-public:
     virtual void Update(float deltaTime) override;
 
-public:
     Graph field;
+    BeeKeeper* beekeeper;
+    //vector bee
+
 
 private:
     const int _vertex_draw_width = 8;

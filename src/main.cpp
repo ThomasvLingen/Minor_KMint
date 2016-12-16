@@ -24,8 +24,6 @@ int main()
 
     BeeField map;
 
-    application->AddRenderable(&map);
-
     while (application->IsRunning())
     {
         application->StartTick();
@@ -43,6 +41,7 @@ int main()
             }
         }
 
+        application->UpdateGameObjects();
         application->RenderGameObjects();
         application->EndTick();
         // For the background
