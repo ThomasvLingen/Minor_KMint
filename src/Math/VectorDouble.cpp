@@ -20,3 +20,19 @@ double VectorDouble::get_length()
     // We pythagoras now
     return sqrt(pow(this->x, 2) + pow(this->y, 2));
 }
+
+VectorDouble VectorDouble::operator*(const int multiplication)
+{
+    return {
+        this->x * multiplication,
+        this->y * multiplication
+    };
+}
+
+VectorDouble VectorDouble::operator+(VectorDouble other)
+{
+    return {
+        this->x + other.x,
+        this->y + other.y
+    };
+}
