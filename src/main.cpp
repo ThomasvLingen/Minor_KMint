@@ -11,7 +11,6 @@ const int screen_height = 600;
 
 int main()
 {
-    //auto window = Window::CreateSDLWindow();
     auto application = new FWApplication(0, 0, screen_width, screen_height);
     if (!application->GetWindow())
     {
