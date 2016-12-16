@@ -7,8 +7,10 @@
 
 
 #include "../graph/CoordinateDouble.hpp"
+#include <cmath>
 
 struct VectorDouble {
+    VectorDouble();
     VectorDouble(double x, double y);
     VectorDouble(CoordinateDouble obj);
 
@@ -17,6 +19,7 @@ struct VectorDouble {
 
     VectorDouble normalise();
     VectorDouble truncate(double value);
+    VectorDouble perpendicular();
     double get_length();
     VectorDouble operator*(const int multiplication);
     VectorDouble operator*(const double multiplication);

@@ -3,8 +3,13 @@
 //
 
 #include "VectorDouble.hpp"
-#include <cmath>
 
+VectorDouble::VectorDouble()
+: x(0)
+, y(0)
+{
+
+}
 
 VectorDouble::VectorDouble(double x, double y)
 : x(x)
@@ -60,5 +65,13 @@ VectorDouble VectorDouble::truncate(double value)
     return VectorDouble {
         this->x / div_value,
         this->y / div_value
+    };
+}
+
+VectorDouble VectorDouble::perpendicular()
+{
+    return {
+        this->x * -1,
+        this->y
     };
 }

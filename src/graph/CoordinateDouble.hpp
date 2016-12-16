@@ -11,6 +11,7 @@ struct CoordinateDouble {
     double x;
     double y;
 
+    CoordinateDouble();
     CoordinateDouble(double x, double y);
     CoordinateDouble(VectorDouble& other);
 
@@ -19,6 +20,8 @@ struct CoordinateDouble {
     CoordinateDouble operator-(const CoordinateDouble& other);
     bool operator==(const VectorDouble& other);
     bool operator!=(const VectorDouble& other);
+
+    CoordinateDouble wrap(int max_x, int max_y);
 };
 
 #endif //MINOR_KMINT_COORDINATEDOUBLE_HPP
