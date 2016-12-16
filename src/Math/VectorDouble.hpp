@@ -19,6 +19,7 @@ struct VectorDouble {
     VectorDouble truncate(double value);
     double get_length();
     VectorDouble operator*(const int multiplication);
+    VectorDouble operator*(const double multiplication);
     VectorDouble operator+(VectorDouble other);
 };
 

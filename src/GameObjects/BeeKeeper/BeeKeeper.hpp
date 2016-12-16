@@ -27,11 +27,11 @@ public:
     virtual void Update(float deltaTime) override;
 
 private:
-    const int speed = 10;
+    const int speed = 100;
 
-    void _step_towards_target();
+    void _step_towards_target(double dt);
     void _apply_vector(VectorDouble to_apply);
-    VectorDouble _get_step_vector();
+    VectorDouble _get_step_vector(double dt);
 };
 
 

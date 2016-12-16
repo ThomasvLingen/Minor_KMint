@@ -33,6 +33,11 @@ double VectorDouble::get_length()
 
 VectorDouble VectorDouble::operator*(const int multiplication)
 {
+    return *this * (double)multiplication;
+}
+
+VectorDouble VectorDouble::operator*(const double multiplication)
+{
     return {
         this->x * multiplication,
         this->y * multiplication
