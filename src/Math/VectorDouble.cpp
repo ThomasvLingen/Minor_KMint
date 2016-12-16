@@ -7,12 +7,7 @@
 
 VectorDouble VectorDouble::normalise()
 {
-    double length = this->get_length();
-
-    return VectorDouble {
-        this->x / length,
-        this->y / length
-    };
+    return this->truncate(1);
 }
 
 double VectorDouble::get_length()
@@ -34,5 +29,16 @@ VectorDouble VectorDouble::operator+(VectorDouble other)
     return {
         this->x + other.x,
         this->y + other.y
+    };
+}
+
+VectorDouble VectorDouble::truncate(double value)
+{
+    double length = this->get_length();
+    double div_value = length / value;
+
+    return VectorDouble {
+        this->x / div_value,
+        this->y / div_value
     };
 }
