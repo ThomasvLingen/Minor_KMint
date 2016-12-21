@@ -7,9 +7,15 @@
 
 
 #include "../../IGameObject.h"
+#include "../Vehicle.hpp"
 
-class Bee : public IGameObject {
+class Bee : public IGameObject, public Vehicle {
+public:
+    Bee(BeeField& beeField, double max_speed);
 
+    virtual void Update(float deltaTime) override;
+
+    virtual void Draw() override;
 };
 
 

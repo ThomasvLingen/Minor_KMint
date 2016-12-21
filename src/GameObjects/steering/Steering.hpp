@@ -6,8 +6,17 @@
 #define MINOR_KMINT_STEERING_HPP
 
 
-class Steering {
+#include "../../Math/VectorDouble.hpp"
+class Vehicle;
 
+class Steering {
+public:
+    Steering(Vehicle& _vehicle);
+
+    VectorDouble calculate();
+
+private:
+    Vehicle& _vehicle;
 };
 
 

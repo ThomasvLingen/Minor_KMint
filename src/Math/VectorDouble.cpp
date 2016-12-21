@@ -57,6 +57,14 @@ VectorDouble VectorDouble::operator+(VectorDouble other)
     };
 }
 
+VectorDouble VectorDouble::operator-(VectorDouble other)
+{
+    return {
+        this->x - other.x,
+        this->y - other.y
+    };
+}
+
 VectorDouble VectorDouble::truncate(double value)
 {
     double length = this->get_length();

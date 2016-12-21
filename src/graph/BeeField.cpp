@@ -2,17 +2,21 @@
 // Created by mafn on 12/16/16.
 //
 
+#include <buflist.h>
 #include "BeeField.hpp"
 #include "../UnusedMacro.hpp"
 #include "../RandomUtil.hpp"
+#include "../GameObjects/Bee/Bee.hpp"
 
 BeeField::BeeField()
 : _bg_image(this->mApplication->LoadTexture("map.png"))
 {
     this->_init_field();
+    this->SetSize(600, 600);
     this->beekeeper = new BeeKeeper(*this, RANDOM.choice(this->field.get_vertices()));
     this->mApplication->AddRenderable(this);
     this->mApplication->AddRenderable(this->beekeeper);
+    this->mApplication->AddRenderable(new Bee(*this, 0.1));
 }
 
 void BeeField::_init_field()

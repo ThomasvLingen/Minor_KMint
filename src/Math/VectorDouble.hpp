@@ -24,6 +24,7 @@ struct VectorDouble {
     VectorDouble operator*(const int multiplication);
     VectorDouble operator*(const double multiplication);
     VectorDouble operator+(VectorDouble other);
+    VectorDouble operator-(VectorDouble other);
 };
 
 

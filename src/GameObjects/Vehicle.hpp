@@ -12,10 +12,11 @@
 #include "steering/Steering.hpp"
 
 class Vehicle {
+    friend class Steering;
 public:
     Vehicle(BeeField& beeField, double max_speed);
 
-private:
+protected:
 
     CoordinateDouble pos;
     VectorDouble velocity;
