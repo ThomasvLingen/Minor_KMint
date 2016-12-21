@@ -14,7 +14,7 @@ BeeField::BeeField()
     this->SetSize(600, 600);
 
     this->beekeeper = new BeeKeeper(*this, RANDOM.choice(this->field.get_vertices()));
-    for ( int i = 0 ; i < 100; i++) {
+    for ( int i = 0 ; i < 50; i++) {
         this->bees.push_back(
             new Bee(
                 *this, 0.1,

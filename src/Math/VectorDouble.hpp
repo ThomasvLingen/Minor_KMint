@@ -23,6 +23,7 @@ struct VectorDouble {
     double get_length();
     VectorDouble operator*(const int multiplication);
     VectorDouble operator*(const double multiplication);
+    VectorDouble operator/(const double division);
     VectorDouble operator+(VectorDouble other);
     VectorDouble operator-(VectorDouble other);
 };

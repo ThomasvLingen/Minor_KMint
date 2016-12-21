@@ -27,7 +27,7 @@ void Vehicle::Move(int delta_time)
 }
 
 Vehicle::Vehicle(BeeField& beeField, double max_speed, CoordinateDouble pos)
-: pos(pos) // shouldnt be hardcoded here
+: pos(pos)
 , max_speed(max_speed)
 , world(beeField)
 , behaviour(new Steering(*this ))

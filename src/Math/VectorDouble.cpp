@@ -83,3 +83,11 @@ VectorDouble VectorDouble::perpendicular()
         this->y
     };
 }
+
+VectorDouble VectorDouble::operator/(const double division)
+{
+    return {
+        this->x / division,
+        this->y / division
+    };
+}

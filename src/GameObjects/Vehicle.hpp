@@ -24,6 +24,7 @@ protected:
     VectorDouble side;
 
     double max_speed;
+    double max_vision_range = 30;
 //    double max_force;
 //    double max_turn_rate;
 
