@@ -12,7 +12,7 @@ BeeKeeper::BeeKeeper(BeeField& field, CoordinateDouble current_position)
   // TODO: This should not be hardcoded
 , target_position({50,50})
 {
-    this->SetTexture(mApplication->LoadTexture("lemmling_Cartoon_cow.png"));
+    this->SetTexture(mApplication->LoadTexture("imker.png"));
     this->SetSize(40, 40);
 }
 
