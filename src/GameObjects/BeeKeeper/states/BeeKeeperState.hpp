@@ -6,6 +6,7 @@
 #define MINOR_KMINT_BEEKEEPERSTATE_HPP
 
 #include <string>
+#include "../../../graph/Vertex.hpp"
 
 using std::string;
 
@@ -18,7 +19,7 @@ public:
 
     string name;
 protected:
-    BeeKeeperState& _context;
+    BeeKeeper& _context;
 };
 
 

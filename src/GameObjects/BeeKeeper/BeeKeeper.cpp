@@ -4,13 +4,14 @@
 
 #include <iostream>
 #include "BeeKeeper.hpp"
-#include "../../Math/VectorDouble.hpp"
+#include "../../RandomUtil.hpp"
+#include "../../graph/BeeField.hpp"
 
-BeeKeeper::BeeKeeper(BeeField& field, CoordinateDouble current_position)
+BeeKeeper::BeeKeeper(BeeField& field, Vertex* start_position)
 : field(field)
-, current_position(current_position)
-  // TODO: This should not be hardcoded
-, target_position({50,50})
+, current_vertex(start_position)
+, current_position(start_position->coordinates)
+, _current_state(new BeeKeeperLostItState(*this))
 {
     this->SetTexture(mApplication->LoadTexture("imker.png"));
     this->SetSize(40, 40);
@@ -23,9 +24,7 @@ void BeeKeeper::Draw()
 
 void BeeKeeper::Update(float deltaTime)
 {
-    if (this->current_position != this->target_position) {
-        this->_step_towards_target((double) deltaTime);
-    }
+    this->_current_state->update(deltaTime);
 
     this->SetOffset((uint32_t)this->current_position.x, (uint32_t)this->current_position.y);
 }
@@ -53,4 +52,24 @@ VectorDouble BeeKeeper::_get_step_vector(double dt)
 void BeeKeeper::_apply_vector(VectorDouble to_apply)
 {
     this->current_position = this->current_position - to_apply;
+}
+
+void BeeKeeper::_target_random_neighbour()
+{
+    vector<Vertex*> neighbours = this->field.field.get_vertex_neighbours(this->current_vertex);
+
+    if (neighbours.size() > 0) {
+        this->_target_vertex(RANDOM.choice(neighbours));
+    }
+}
+
+void BeeKeeper::_target_vertex(Vertex* v)
+{
+    this->target_vertex = v;
+    this->target_position = v->coordinates;
+}
+
+void BeeKeeper::_arrive_at_target(Vertex* v)
+{
+    this->current_vertex = v;
 }

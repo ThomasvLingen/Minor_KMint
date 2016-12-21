@@ -4,12 +4,13 @@
 
 #include "BeeField.hpp"
 #include "../UnusedMacro.hpp"
+#include "../RandomUtil.hpp"
 
 BeeField::BeeField()
 : _bg_image(this->mApplication->LoadTexture("map.png"))
 {
     this->_init_field();
-    this->beekeeper = new BeeKeeper(*this, CoordinateDouble {300,300});
+    this->beekeeper = new BeeKeeper(*this, RANDOM.choice(this->field.get_vertices()));
     this->mApplication->AddRenderable(this);
     this->mApplication->AddRenderable(this->beekeeper);
 }

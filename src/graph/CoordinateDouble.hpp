@@ -5,6 +5,8 @@
 #ifndef MINOR_KMINT_COORDINATEDOUBLE_HPP
 #define MINOR_KMINT_COORDINATEDOUBLE_HPP
 
+#include "Vertex.hpp"
+
 class VectorDouble;
 
 struct CoordinateDouble {
@@ -14,6 +16,7 @@ struct CoordinateDouble {
     CoordinateDouble();
     CoordinateDouble(double x, double y);
     CoordinateDouble(VectorDouble& other);
+    CoordinateDouble(CoordinateInt other);
 
     CoordinateDouble operator+(VectorDouble& other);
     CoordinateDouble operator+(const CoordinateDouble& other);

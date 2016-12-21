@@ -19,6 +19,13 @@ CoordinateDouble::CoordinateDouble(VectorDouble& other)
 
 }
 
+CoordinateDouble::CoordinateDouble(CoordinateInt other)
+: x(other.x)
+, y(other.y)
+{
+
+}
+
 CoordinateDouble CoordinateDouble::operator+(VectorDouble& other)
 {
     return *this + CoordinateDouble(other);
