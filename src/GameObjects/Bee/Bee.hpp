@@ -11,7 +11,7 @@
 
 class Bee : public IGameObject, public Vehicle {
 public:
-    Bee(BeeField& beeField, double max_speed);
+    Bee(BeeField& beeField, double max_speed, CoordinateDouble pos);
 
     virtual void Update(float deltaTime) override;
 

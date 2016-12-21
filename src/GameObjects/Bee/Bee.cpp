@@ -5,8 +5,8 @@
 #include <iostream>
 #include "Bee.hpp"
 
-Bee::Bee(BeeField& beeField, double max_speed)
-: Vehicle(beeField, max_speed)
+Bee::Bee(BeeField& beeField, double max_speed, CoordinateDouble pos)
+: Vehicle(beeField, max_speed, pos)
 {
     this->SetTexture(mApplication->LoadTexture("bij.png"));
     this->SetSize(40, 40);

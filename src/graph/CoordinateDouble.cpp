@@ -59,9 +59,12 @@ bool CoordinateDouble::operator!=(const VectorDouble& other)
 
 CoordinateDouble CoordinateDouble::wrap(int max_x, int max_y)
 {
+    double new_x = fmod(this->x, max_x);
+    double new_y = fmod(this->y, max_y);
+
     return {
-        fmod(this->x, max_x),
-        fmod(this->y, max_y)
+        (new_x < 0) ? new_x + max_x : new_x,
+        (new_y < 0) ? new_y + max_y : new_y
     };
 }
 

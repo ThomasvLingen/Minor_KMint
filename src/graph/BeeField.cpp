@@ -15,7 +15,14 @@ BeeField::BeeField()
     this->beekeeper = new BeeKeeper(*this, RANDOM.choice(this->field.get_vertices()));
     this->mApplication->AddRenderable(this);
     this->mApplication->AddRenderable(this->beekeeper);
-    this->mApplication->AddRenderable(new Bee(*this, 0.1));
+    for ( int i = 0 ; i < 100; i++){
+        this->mApplication->AddRenderable(
+            new Bee(
+                *this, 0.1,
+                {(double)RANDOM.get_random_int(0,this->mWidth), (double)RANDOM.get_random_int(0, this->mHeight)}
+            )
+        );
+    }
 }
 
 void BeeField::_init_field()

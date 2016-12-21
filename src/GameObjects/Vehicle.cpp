@@ -23,11 +23,11 @@ void Vehicle::Move(int delta_time)
         this->side = this->heading.perpendicular();
     }
 
-    this->pos = this->pos.wrap(this->world.mWidth, this->world.mHeight); //hardcoded screensize
+    this->pos = this->pos.wrap(this->world.mWidth, this->world.mHeight);
 }
 
-Vehicle::Vehicle(BeeField& beeField, double max_speed)
-: pos(CoordinateDouble{200,200}) // shouldnt be hardcoded here
+Vehicle::Vehicle(BeeField& beeField, double max_speed, CoordinateDouble pos)
+: pos(pos) // shouldnt be hardcoded here
 , max_speed(max_speed)
 , world(beeField)
 , behaviour(new Steering(*this ))

@@ -14,7 +14,7 @@
 class Vehicle {
     friend class Steering;
 public:
-    Vehicle(BeeField& beeField, double max_speed);
+    Vehicle(BeeField& beeField, double max_speed, CoordinateDouble pos);
 
 protected:
 
