@@ -12,16 +12,27 @@ BeeField::BeeField()
 {
     this->_init_field();
     this->SetSize(600, 600);
+
     this->beekeeper = new BeeKeeper(*this, RANDOM.choice(this->field.get_vertices()));
-    this->mApplication->AddRenderable(this);
-    this->mApplication->AddRenderable(this->beekeeper);
-    for ( int i = 0 ; i < 100; i++){
-        this->mApplication->AddRenderable(
+    for ( int i = 0 ; i < 100; i++) {
+        this->bees.push_back(
             new Bee(
                 *this, 0.1,
                 {(double)RANDOM.get_random_int(0,this->mWidth), (double)RANDOM.get_random_int(0, this->mHeight)}
             )
         );
+    }
+
+    this->_init_renderables();
+}
+
+void BeeField::_init_renderables()
+{
+    this->mApplication->AddRenderable(this);
+    this->mApplication->AddRenderable(this->beekeeper);
+
+    for (auto brommer : this->bees) {
+        this->mApplication->AddRenderable(brommer);
     }
 }
 

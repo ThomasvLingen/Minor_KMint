@@ -10,6 +10,8 @@
 #include "Graph.hpp"
 #include "../GameObjects/BeeKeeper/BeeKeeper.hpp"
 
+class Bee;
+
 class BeeField : public IGameObject {
 public:
     BeeField();
@@ -19,7 +21,7 @@ public:
 
     Graph field;
     BeeKeeper* beekeeper;
-    //vector bee
+    vector<Bee*> bees;
 
 
 private:
@@ -28,6 +30,7 @@ private:
     SDL_Texture* _bg_image;
 
     void _init_field();
+    void _init_renderables();
 
     void _draw_vertices();
     void _draw_edges();
