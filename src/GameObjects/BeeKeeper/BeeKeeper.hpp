@@ -17,6 +17,7 @@
 #include "states/BeeKeeperState.hpp"
 #include "states/BeeKeeperLostItState.hpp"
 #include "states/BeeKeeperChaseState.hpp"
+#include "BeeNet.hpp"
 
 
 using std::vector;
@@ -36,6 +37,8 @@ public:
     Vertex* target_vertex = nullptr;
     CoordinateDouble current_position;
     CoordinateDouble target_position;
+
+    BeeNet net;
 
     virtual void Draw() override;
 

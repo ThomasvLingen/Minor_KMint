@@ -13,6 +13,7 @@ BeeKeeper::BeeKeeper(BeeField& field, Vertex* start_position)
 , target_vertex(current_vertex)
 , current_position(start_position->coordinates)
 , target_position(start_position->coordinates)
+, net(*this)
 , _current_state(new BeeKeeperChaseState(*this))
 {
     this->SetTexture(mApplication->LoadTexture("imker.png"));

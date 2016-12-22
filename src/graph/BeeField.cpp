@@ -28,6 +28,7 @@ BeeField::BeeField()
 void BeeField::_init_renderables()
 {
     this->mApplication->AddRenderable(this);
+    this->mApplication->AddRenderable(&(this->beekeeper->net));
     this->mApplication->AddRenderable(this->beekeeper);
 
     for (auto brommer : this->bees) {
