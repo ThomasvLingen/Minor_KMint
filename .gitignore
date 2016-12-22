@@ -4,6 +4,9 @@
 # Doxygen generated docs
 docs/html
 
+# GDB stuff
+.gdb_history
+
 # build folder
 build/
 .idea/
