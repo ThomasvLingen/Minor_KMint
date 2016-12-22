@@ -11,10 +11,6 @@
 BeeKeeperChaseState::BeeKeeperChaseState(BeeKeeper& context)
 : BeeKeeperState(context)
 {
-    if (this->_context.current_vertex == nullptr) {
-        std::cout << "WHAT THE FUCK MAN" << std::endl;
-    }
-
     this->name = "Beekeeper chase state";
 
     this->_recalculate_path();
