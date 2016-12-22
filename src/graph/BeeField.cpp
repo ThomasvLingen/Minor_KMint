@@ -5,7 +5,6 @@
 #include "BeeField.hpp"
 #include "../UnusedMacro.hpp"
 #include "../RandomUtil.hpp"
-#include "../GameObjects/Bee/Bee.hpp"
 
 BeeField::BeeField()
 : _bg_image(this->mApplication->LoadTexture("map.png"))
@@ -13,7 +12,7 @@ BeeField::BeeField()
     this->_init_field();
     this->SetSize(600, 600);
 
-    for (int i = 0 ; i < 100; i++) {
+    for (int i = 0 ; i < this->_num_of_bees; i++) {
         this->bees.push_back(
             new Bee(
                 *this, 0.1,

@@ -26,6 +26,7 @@ public:
 
 private:
     const int _vertex_draw_width = 8;
+    const int _num_of_bees = 50;
 
     SDL_Texture* _bg_image;
 
