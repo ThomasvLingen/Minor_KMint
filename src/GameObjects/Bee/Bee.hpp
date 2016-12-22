@@ -13,9 +13,15 @@ class Bee : public IGameObject, public Vehicle {
 public:
     Bee(BeeField& beeField, double max_speed, CoordinateDouble pos);
 
-    virtual void Update(float deltaTime) override;
+    // This is in pixels
+    const int radius = 20;
 
+    virtual void Update(float deltaTime) override;
     virtual void Draw() override;
+
+    void die();
+private:
+    BeeField& _field;
 };
 
 

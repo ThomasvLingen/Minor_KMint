@@ -29,6 +29,7 @@ class BeeKeeper : public IGameObject {
     friend class BeeKeeperState;
     friend class BeeKeeperLostItState;
     friend class BeeKeeperChaseState;
+    friend class BeeNet;
 public:
     BeeKeeper(BeeField& field, Vertex* start_position);
 
