@@ -3,7 +3,9 @@
 //
 
 #include <iostream>
+#include <cmath>
 #include "Vehicle.hpp"
+#include "../graph/BeeField.hpp"
 
 void Vehicle::Move(int delta_time)
 {

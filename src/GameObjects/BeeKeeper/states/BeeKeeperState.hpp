@@ -6,7 +6,9 @@
 #define MINOR_KMINT_BEEKEEPERSTATE_HPP
 
 #include <string>
+#include <algorithm>
 #include "../../../graph/Vertex.hpp"
+#include "../../Bee/Bee.hpp"
 
 using std::string;
 

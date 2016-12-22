@@ -5,6 +5,7 @@
 #include <iostream>
 #include "Steering.hpp"
 #include "../Vehicle.hpp"
+#include "../../graph/BeeField.hpp"
 #include "../Bee/Bee.hpp"
 
 Steering::Steering(Vehicle& _vehicle)

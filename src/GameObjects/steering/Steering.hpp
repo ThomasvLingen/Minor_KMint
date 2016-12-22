@@ -28,5 +28,4 @@ private:
     vector<Vehicle*> _neighbours;
 };
 
-
 #endif //MINOR_KMINT_STEERING_HPP

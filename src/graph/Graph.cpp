@@ -4,6 +4,7 @@
 
 #include "Graph.hpp"
 #include <cmath>
+#include <algorithm>
 
 Graph::Graph()
 {
@@ -49,4 +50,22 @@ vector<Vertex*> Graph::get_vertex_neighbours(Vertex* start)
     }
 
     return neighbours;
+}
+
+Vertex* Graph::get_vertex_closest_to_point(CoordinateDouble pos)
+{
+    auto vertex_comparison = [pos] (Vertex* a, Vertex* b) {
+        CoordinateDouble a_pos(a->coordinates);
+        CoordinateDouble b_pos(b->coordinates);
+
+        return a_pos.get_raw_distance_to_point(pos) < b_pos.get_raw_distance_to_point(pos);
+    };
+
+    vector<Vertex*>::iterator found_vertex = std::min_element(this->get_vertices().begin(), this->get_vertices().end(), vertex_comparison);
+
+    if (found_vertex != this->get_vertices().end()) {
+        return *found_vertex;
+    } else {
+        return nullptr;
+    }
 }

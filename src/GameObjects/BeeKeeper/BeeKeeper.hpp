@@ -16,15 +16,18 @@
 #include "../../graph/Vertex.hpp"
 #include "states/BeeKeeperState.hpp"
 #include "states/BeeKeeperLostItState.hpp"
+#include "states/BeeKeeperChaseState.hpp"
 
 
 using std::vector;
 
 class BeeField;
+class Bee;
 
 class BeeKeeper : public IGameObject {
     friend class BeeKeeperState;
     friend class BeeKeeperLostItState;
+    friend class BeeKeeperChaseState;
 public:
     BeeKeeper(BeeField& field, Vertex* start_position);
 
@@ -50,7 +53,13 @@ private:
 
     void _target_random_neighbour();
     void _target_vertex(Vertex* v);
+    void _target_next_vert_in_path();
+
     void _arrive_at_target(Vertex* v);
+
+    Bee* _get_closest_bee();
+
+    void _draw_target_vert();
 };
 
 

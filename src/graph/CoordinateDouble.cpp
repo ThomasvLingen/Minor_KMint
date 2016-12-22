@@ -74,3 +74,8 @@ CoordinateDouble::CoordinateDouble()
 {
 
 }
+
+double CoordinateDouble::get_raw_distance_to_point(CoordinateDouble pos)
+{
+    return pow(this->x - pos.x, 2) + pow(this->y - pos.y, 2);
+}

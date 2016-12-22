@@ -25,6 +25,7 @@ struct CoordinateDouble {
     bool operator!=(const VectorDouble& other);
 
     CoordinateDouble wrap(int max_x, int max_y);
+    double get_raw_distance_to_point(CoordinateDouble pos);
 };
 
 #endif //MINOR_KMINT_COORDINATEDOUBLE_HPP

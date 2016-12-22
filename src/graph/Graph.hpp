@@ -9,6 +9,7 @@
 
 #include "Vertex.hpp"
 #include "Edge.hpp"
+#include "CoordinateDouble.hpp"
 
 using std::vector;
 
@@ -23,6 +24,7 @@ public:
 
     static float calculate_raw_distance_between_vertici(Vertex* first, Vertex* second);
     vector<Vertex*> get_vertex_neighbours(Vertex* start);
+    Vertex* get_vertex_closest_to_point(CoordinateDouble pos);
 private:
     vector<Vertex*> _vertices;
     vector<Edge*> _edges;

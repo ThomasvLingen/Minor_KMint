@@ -13,8 +13,7 @@ BeeField::BeeField()
     this->_init_field();
     this->SetSize(600, 600);
 
-    this->beekeeper = new BeeKeeper(*this, RANDOM.choice(this->field.get_vertices()));
-    for ( int i = 0 ; i < 50; i++) {
+    for (int i = 0 ; i < 100; i++) {
         this->bees.push_back(
             new Bee(
                 *this, 0.1,
@@ -22,6 +21,7 @@ BeeField::BeeField()
             )
         );
     }
+    this->beekeeper = new BeeKeeper(*this, RANDOM.choice(this->field.get_vertices()));
 
     this->_init_renderables();
 }

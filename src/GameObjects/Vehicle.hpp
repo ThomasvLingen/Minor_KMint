@@ -8,17 +8,18 @@
 
 #include "../Math/VectorDouble.hpp"
 #include "../graph/CoordinateDouble.hpp"
-#include "../graph/BeeField.hpp"
 #include "steering/Steering.hpp"
+
+class BeeField;
 
 class Vehicle {
     friend class Steering;
 public:
     Vehicle(BeeField& beeField, double max_speed, CoordinateDouble pos);
 
-protected:
-
     CoordinateDouble pos;
+
+protected:
     VectorDouble velocity;
     VectorDouble heading;
     VectorDouble side;
