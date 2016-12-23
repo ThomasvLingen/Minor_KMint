@@ -16,6 +16,8 @@ public:
 
 private:
 
+    const int _max_bees_in_net = 10;
+
     void _recalculate_path();
     Vertex* _get_target_vertex();
 };

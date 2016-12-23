@@ -22,7 +22,7 @@ public:
     virtual void Draw() override;
     virtual void Update(float deltaTime) override;
 
-    void catch_bees_in_range();
+    void catch_bees_in_range(int max_bees_in_net);
 
 private:
     const Color _draw_colour = { 0x0, 0x0, 0xFF, 0x80};
@@ -36,6 +36,8 @@ private:
     int _last_growth_timestamp;
 
     void _expand();
+
+    void _catch_bee(Bee* to_catch);
     vector<Bee*> _get_bees_in_net_range();
 };
 

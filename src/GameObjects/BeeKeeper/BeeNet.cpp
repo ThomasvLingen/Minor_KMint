@@ -43,16 +43,39 @@ void BeeNet::_expand()
     this->_radius += this->_net_growth;
 }
 
-void BeeNet::catch_bees_in_range()
+void BeeNet::catch_bees_in_range(int max_bees_in_net)
 {
-    vector<Bee*> bees_in_range = this->_get_bees_in_net_range();
+    int num_of_bees_to_catch = max_bees_in_net - this->bees_in_net;
 
-    for (Bee* bee : bees_in_range) {
-        bee->die();
-        this->bees_in_net++;
-
-        std::cout << "Net contains " << this->bees_in_net << " bees." << std::endl;
+    if (num_of_bees_to_catch < 0) {
+        // Something is horribly wrong lol
+        return;
     }
+
+    vector<Bee*> bees_in_range = this->_get_bees_in_net_range();
+    // I probably should have solved this the imperative way instead of making it a magic one-liner.
+    // But what this basically does is initialise bees_to_catch with the amount of bees that we want to catch.
+    // In the case that bees_in_range is smaller than num_of_bees... then it will be a copy of bees_in_range.
+    // Otherwise it will be the first num_of_bees... elements of bees_in_range.
+    vector<Bee*> bees_to_catch (
+        bees_in_range.begin(),
+        std::next(
+            bees_in_range.begin(),
+            std::min((size_t)num_of_bees_to_catch, bees_in_range.size())
+        )
+    );
+
+    for (Bee* bee : bees_to_catch) {
+        this->_catch_bee(bee);
+    }
+}
+
+void BeeNet::_catch_bee(Bee* to_catch)
+{
+    to_catch->die();
+    this->bees_in_net++;
+
+    std::cout << "Net contains " << this->bees_in_net << " bees." << std::endl;
 }
 
 vector<Bee*> BeeNet::_get_bees_in_net_range()

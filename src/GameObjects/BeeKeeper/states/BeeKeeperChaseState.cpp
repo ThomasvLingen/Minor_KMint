@@ -22,7 +22,7 @@ void BeeKeeperChaseState::update(float delta_time)
     // std::cout << "pos [" << this->_context.current_position.x << "," << this->_context.current_position.y << "]" << std::endl;
     // std::cout << "target [" << this->_context.target_position.x << "," << this->_context.target_position.y << "]" << std::endl;
 
-    this->_context.net.catch_bees_in_range();
+    this->_context.net.catch_bees_in_range(this->_max_bees_in_net);
 
     if (this->_context.current_position == this->_context.target_position) {
         this->_context._arrive_at_target(this->_context.target_vertex);
