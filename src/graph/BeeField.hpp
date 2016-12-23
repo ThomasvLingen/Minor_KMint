@@ -22,6 +22,7 @@ public:
     Graph field;
     BeeKeeper* beekeeper;
     vector<Bee*> bees;
+    Vertex* home_vector = nullptr;
 
 
 private:

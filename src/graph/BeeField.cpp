@@ -257,6 +257,7 @@ void BeeField::_init_field()
     auto vertex325 = new Vertex(190, 576);
     this->field.add_vertex(vertex325);
     auto vertex327 = new Vertex(384, 555); // Dit is de basis rechtsonder
+    this->home_vector = vertex327;
     this->field.add_vertex(vertex327);
     this->field.add_edge(new Edge(vertex103, vertex104));
     this->field.add_edge(new Edge(vertex106, vertex105));

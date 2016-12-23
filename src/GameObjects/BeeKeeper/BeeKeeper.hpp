@@ -18,6 +18,7 @@
 #include "states/BeeKeeperLostItState.hpp"
 #include "states/BeeKeeperChaseState.hpp"
 #include "BeeNet.hpp"
+#include "states/BeeKeeperReturnState.hpp"
 
 
 using std::vector;
@@ -29,6 +30,7 @@ class BeeKeeper : public IGameObject {
     friend class BeeKeeperState;
     friend class BeeKeeperLostItState;
     friend class BeeKeeperChaseState;
+    friend class BeeKeeperReturnState;
     friend class BeeNet;
 public:
     BeeKeeper(BeeField& field, Vertex* start_position);
@@ -42,8 +44,9 @@ public:
     BeeNet net;
 
     virtual void Draw() override;
-
     virtual void Update(float deltaTime) override;
+
+    void set_state(BeeKeeperState* next_state);
 
 private:
     const int speed = 100;

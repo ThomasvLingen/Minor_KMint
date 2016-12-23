@@ -14,10 +14,11 @@ BeeKeeper::BeeKeeper(BeeField& field, Vertex* start_position)
 , current_position(start_position->coordinates)
 , target_position(start_position->coordinates)
 , net(*this)
-, _current_state(new BeeKeeperChaseState(*this))
 {
     this->SetTexture(mApplication->LoadTexture("imker.png"));
     this->SetSize(40, 40);
+
+    this->set_state(new BeeKeeperChaseState(*this));
 }
 
 void BeeKeeper::Draw()
@@ -116,4 +117,9 @@ void BeeKeeper::_draw_target_vert()
         Vertex* last_vert_in_path = this->_path.front();
         this->mApplication->DrawCircle(last_vert_in_path->coordinates.x, last_vert_in_path->coordinates.y, 8, true);
     }
+}
+
+void BeeKeeper::set_state(BeeKeeperState* next_state)
+{
+    this->_current_state = next_state;
 }
