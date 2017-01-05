@@ -25,6 +25,7 @@ void Vehicle::Move(int delta_time)
         this->side = this->heading.perpendicular();
     }
 
+    this->velocity = this->velocity * 0.8;
     this->pos = this->pos.wrap(this->world.mWidth, this->world.mHeight);
 }
 

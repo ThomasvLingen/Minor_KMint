@@ -18,13 +18,20 @@ public:
     Steering(Vehicle& _vehicle);
 
     VectorDouble calculate();
-    VectorDouble evade();
+    VectorDouble evade(VectorDouble target_pos);
     VectorDouble seperation();
+    VectorDouble allignment();
+    VectorDouble cohesion();
+    VectorDouble seek(VectorDouble target_pos);
+    VectorDouble arrive(VectorDouble target_pos);
+    VectorDouble wander();
+    bool accumulate_force(VectorDouble& total, VectorDouble to_add);
 
 private:
     Vehicle& _vehicle;
 
     void tag_neighbours();
+    double random_jitter();
     vector<Vehicle*> _neighbours;
 };
 

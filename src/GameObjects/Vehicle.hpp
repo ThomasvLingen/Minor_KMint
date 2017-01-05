@@ -18,6 +18,7 @@ public:
     Vehicle(BeeField& beeField, double max_speed, CoordinateDouble pos);
 
     CoordinateDouble pos;
+    bool ja = false;
 
 protected:
     VectorDouble velocity;
@@ -26,8 +27,13 @@ protected:
 
     double max_speed;
     double max_vision_range = 30;
-//    double max_force;
+    double max_force = 10;
 //    double max_turn_rate;
+
+    double wander_radius = 3;
+    double wander_distance = 2.5;
+    double wander_jitter = 0.5;
+    VectorDouble wander_target;
 
     BeeField& world;
     Steering* behaviour;
