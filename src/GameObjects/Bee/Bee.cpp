@@ -27,6 +27,12 @@ void Bee::Draw()
 {
     if (this->mIsActive) {
         IGameObject::Draw();
+        this->mApplication->DrawLine(
+            this->pos.x,
+            this->pos.y,
+            this->pos.x + this->heading.x*25,
+            this->pos.y + this->heading.y*25
+        );
     }
 }
 

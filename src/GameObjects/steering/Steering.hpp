@@ -18,8 +18,11 @@ public:
     Steering(Vehicle& _vehicle);
 
     VectorDouble calculate();
-    VectorDouble evade();
+    VectorDouble evade(VectorDouble target_pos);
     VectorDouble seperation();
+    VectorDouble allignment();
+    VectorDouble cohesion();
+    VectorDouble seek(VectorDouble target_pos);
 
 private:
     Vehicle& _vehicle;

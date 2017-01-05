@@ -34,7 +34,7 @@ public:
 private:
     const Color _draw_colour = { 0x0, 0x0, 0xFF, 0x80};
     const int _net_growth = 10;
-    const int _net_growth_interval_ms = 1000;
+    const int _net_growth_interval_ms = 1000 * 2;
 
     BeeKeeper& _context;
 

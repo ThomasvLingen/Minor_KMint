@@ -2,6 +2,7 @@
 // Created by mafn on 11/25/16.
 //
 
+#include <iostream>
 #include "Pathfinding.hpp"
 
 vector<Vertex*> Pathfinding::astar(Graph& field, Vertex* start, Vertex* end)
@@ -20,6 +21,9 @@ vector<Vertex*> Pathfinding::astar(Graph& field, Vertex* start, Vertex* end)
     });
 
     while (!open_list.empty()) {
+        if (open_list.size() > 10000) {
+            std::cout << "U WOT, SIZE OVER 9000 + 1000" << std::endl;
+        }
         AStar_Vertex* q = Pathfinding::_get_lowest_cost_vert(open_list);
         open_list.remove(q);
         // Search neighbours (parent becomes q)
