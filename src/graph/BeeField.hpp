@@ -9,9 +9,9 @@
 #include "../IGameObject.h"
 #include "Graph.hpp"
 #include "../GameObjects/BeeKeeper/BeeKeeper.hpp"
-#include "../GameObjects/Powerup/Powerup.hpp"
 
 class Bee;
+class Powerup;
 
 class BeeField : public IGameObject {
 public:

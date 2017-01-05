@@ -5,6 +5,7 @@
 #include "BeeField.hpp"
 #include "../UnusedMacro.hpp"
 #include "../RandomUtil.hpp"
+#include "../GameObjects/Powerup/Powerup.hpp"
 
 BeeField::BeeField()
 : _bg_image(this->mApplication->LoadTexture("map.png"))
