@@ -9,7 +9,7 @@
 Powerup::Powerup(BeeField& field)
 : _garfield(field)
 {
-    this->SetTexture(this->mApplication->LoadTexture("taco.png"));
+    this->SetTexture(this->mApplication->LoadTexture("bij.png"));
     this->SetSize(50, 50);
 
     this->_jump_to_random_vector();
