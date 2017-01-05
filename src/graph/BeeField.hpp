@@ -9,6 +9,7 @@
 #include "../IGameObject.h"
 #include "Graph.hpp"
 #include "../GameObjects/BeeKeeper/BeeKeeper.hpp"
+#include "../GameObjects/Powerup/Powerup.hpp"
 
 class Bee;
 
@@ -22,6 +23,7 @@ public:
     Graph field;
     BeeKeeper* beekeeper;
     vector<Bee*> bees;
+    Powerup* powerup;
     Vertex* home_vector = nullptr;
 
 

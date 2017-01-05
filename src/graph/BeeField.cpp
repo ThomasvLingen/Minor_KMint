@@ -21,6 +21,7 @@ BeeField::BeeField()
         );
     }
     this->beekeeper = new BeeKeeper(*this, RANDOM.choice(this->field.get_vertices()));
+    this->powerup = new Powerup(*this);
 
     this->_init_renderables();
 }
@@ -30,6 +31,7 @@ void BeeField::_init_renderables()
     this->mApplication->AddRenderable(this);
     this->mApplication->AddRenderable(&(this->beekeeper->net));
     this->mApplication->AddRenderable(this->beekeeper);
+    this->mApplication->AddRenderable(this->powerup);
 
     for (auto brommer : this->bees) {
         this->mApplication->AddRenderable(brommer);
