@@ -17,12 +17,14 @@ class BeeNet : public IGameObject {
 public:
     BeeNet(BeeKeeper& context);
 
-    int bees_in_net = 0;
+    vector<Bee*> caught_bees;
 
     virtual void Draw() override;
     virtual void Update(float deltaTime) override;
 
     void catch_bees_in_range(int max_bees_in_net);
+    void clear();
+    size_t bees_in_net();
 
 private:
     const Color _draw_colour = { 0x0, 0x0, 0xFF, 0x80};

@@ -45,7 +45,7 @@ void BeeNet::_expand()
 
 void BeeNet::catch_bees_in_range(int max_bees_in_net)
 {
-    int num_of_bees_to_catch = max_bees_in_net - this->bees_in_net;
+    int num_of_bees_to_catch = max_bees_in_net - this->bees_in_net();
 
     if (num_of_bees_to_catch < 0) {
         // Something is horribly wrong lol
@@ -72,10 +72,9 @@ void BeeNet::catch_bees_in_range(int max_bees_in_net)
 
 void BeeNet::_catch_bee(Bee* to_catch)
 {
-    to_catch->die();
-    this->bees_in_net++;
+    to_catch->get_caught(*this);
 
-    std::cout << "Net contains " << this->bees_in_net << " bees." << std::endl;
+    std::cout << "Net contains " << this->bees_in_net() << " bees." << std::endl;
 }
 
 vector<Bee*> BeeNet::_get_bees_in_net_range()
@@ -93,4 +92,14 @@ vector<Bee*> BeeNet::_get_bees_in_net_range()
     }
 
     return bees_in_range;
+}
+
+size_t BeeNet::bees_in_net()
+{
+    return this->caught_bees.size();
+}
+
+void BeeNet::clear()
+{
+    this->caught_bees.clear();
 }

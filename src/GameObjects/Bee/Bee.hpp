@@ -9,6 +9,8 @@
 #include "../../IGameObject.h"
 #include "../Vehicle.hpp"
 
+class BeeNet;
+
 class Bee : public IGameObject, public Vehicle {
 public:
     Bee(BeeField& beeField, double max_speed, CoordinateDouble pos);
@@ -19,7 +21,7 @@ public:
     virtual void Update(float deltaTime) override;
     virtual void Draw() override;
 
-    void die();
+    void get_caught(BeeNet& net);
 private:
     BeeField& _field;
 };

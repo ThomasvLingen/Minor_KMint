@@ -30,9 +30,11 @@ void Bee::Draw()
     }
 }
 
-void Bee::die()
+void Bee::get_caught(BeeNet& net)
 {
     this->SetActive(false);
 
+    // Move bee from BeeField's bees to the net
     VectorUtil::remove(this->_field.bees, this);
+    net.caught_bees.push_back(this);
 }

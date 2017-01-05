@@ -27,7 +27,7 @@ void BeeKeeperChaseState::update(float delta_time)
     if (this->_context.current_position == this->_context.target_position) {
         this->_context._arrive_at_target(this->_context.target_vertex);
 
-        if (this->_context.net.bees_in_net >= this->_max_bees_in_net) {
+        if (this->_context.net.bees_in_net() >= this->_max_bees_in_net) {
             this->_context.set_state(new BeeKeeperReturnState(this->_context));
             return;
         }
