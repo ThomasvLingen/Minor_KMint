@@ -8,6 +8,11 @@
 
 #include "../graph/CoordinateDouble.hpp"
 #include <cmath>
+#include <ostream>
+
+using std::ostream;
+
+ostream& operator<<(ostream& os, VectorDouble& vec);
 
 struct VectorDouble {
     VectorDouble();

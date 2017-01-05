@@ -22,6 +22,7 @@ public:
     virtual void Draw() override;
 
     void get_caught(BeeNet& net);
+    void get_set_free(BeeNet& net);
 private:
     BeeField& _field;
 };

@@ -7,6 +7,7 @@
 #include "../../BeeKeeper/BeeKeeper.hpp"
 #include "../../../graph/BeeField.hpp"
 #include "../../../Pathfinding/Pathfinding.hpp"
+#include "../../../RandomUtil.hpp"
 
 BeeKeeperChaseState::BeeKeeperChaseState(BeeKeeper& context)
 : BeeKeeperState(context)
@@ -28,7 +29,7 @@ void BeeKeeperChaseState::update(float delta_time)
         this->_context._arrive_at_target(this->_context.target_vertex);
 
         if (this->_context.net.bees_in_net() >= this->_max_bees_in_net) {
-            this->_context.set_state(new BeeKeeperReturnState(this->_context));
+            this->_set_next_state();
             return;
         }
 
@@ -55,7 +56,6 @@ void BeeKeeperChaseState::_recalculate_path()
 Vertex* BeeKeeperChaseState::_get_target_vertex()
 {
     Bee* closest_bee = this->_context._get_closest_bee();
-    // std::cout << closest_bee->pos.x << " , " << closest_bee->pos.y << std::endl;
 
     if (closest_bee != nullptr) {
         Vertex* closest_vert_to_bee = this->_context.field.field.get_vertex_closest_to_point(closest_bee->pos);
@@ -69,5 +69,16 @@ Vertex* BeeKeeperChaseState::_get_target_vertex()
     } else {
         std::cout << "Not a single bee was found while recalcing the path for the keeper" << std::endl;
         return nullptr;
+    }
+}
+
+void BeeKeeperChaseState::_set_next_state()
+{
+    // TODO: Make this an autistical FSM
+    int next_state_choice = RANDOM.get_random_int(0,1);
+    if (next_state_choice == 0) {
+        this->_context.set_state(new BeeKeeperReturnState(this->_context));
+    } else if (next_state_choice == 1) {
+        this->_context.set_state(new BeeKeeperLostItState(this->_context));
     }
 }

@@ -70,9 +70,10 @@ VectorDouble VectorDouble::truncate(double value)
     double length = this->get_length();
     double div_value = length / value;
 
+
     return VectorDouble {
-        this->x / div_value,
-        this->y / div_value
+        (div_value == 0) ? this->x : this->x / div_value,
+        (div_value == 0) ? this->y : this->y / div_value
     };
 }
 
@@ -90,4 +91,11 @@ VectorDouble VectorDouble::operator/(const double division)
         this->x / division,
         this->y / division
     };
+}
+
+ostream& operator<<(ostream& os, VectorDouble& vec)
+{
+    os << "[" << vec.x << "," << vec.y << "]";
+
+    return os;
 }

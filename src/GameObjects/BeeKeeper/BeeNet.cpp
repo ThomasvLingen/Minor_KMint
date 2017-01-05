@@ -103,3 +103,15 @@ void BeeNet::clear()
 {
     this->caught_bees.clear();
 }
+
+void BeeNet::lose_bee()
+{
+    if (this->caught_bees.size() > 0) {
+        this->caught_bees[0]->get_set_free(*this);
+    }
+}
+
+CoordinateDouble BeeNet::get_position()
+{
+    return this->_context.current_position;
+}

@@ -38,3 +38,15 @@ void Bee::get_caught(BeeNet& net)
     VectorUtil::remove(this->_field.bees, this);
     net.caught_bees.push_back(this);
 }
+
+void Bee::get_set_free(BeeNet& net)
+{
+    this->SetActive(true);
+
+    // Set our position to the net's position
+    this->pos = net.get_position();
+
+    // Move bee from net to Beefield's bees
+    this->_field.bees.push_back(this);
+    VectorUtil::remove(net.caught_bees, this);
+}

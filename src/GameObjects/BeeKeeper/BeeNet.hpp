@@ -6,6 +6,7 @@
 #define MINOR_KMINT_BEENET_HPP
 
 #include "../../IGameObject.h"
+#include "../../graph/CoordinateDouble.hpp"
 #include <vector>
 
 using std::vector;
@@ -22,7 +23,11 @@ public:
     virtual void Draw() override;
     virtual void Update(float deltaTime) override;
 
+    CoordinateDouble get_position();
+
     void catch_bees_in_range(int max_bees_in_net);
+    void lose_bee();
+
     void clear();
     size_t bees_in_net();
 
