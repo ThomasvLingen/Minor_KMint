@@ -19,6 +19,7 @@
 #include "states/BeeKeeperChaseState.hpp"
 #include "BeeNet.hpp"
 #include "states/BeeKeeperReturnState.hpp"
+#include "states/BeeKeeperPowerupState.hpp"
 
 
 using std::vector;
@@ -31,6 +32,7 @@ class BeeKeeper : public IGameObject {
     friend class BeeKeeperLostItState;
     friend class BeeKeeperChaseState;
     friend class BeeKeeperReturnState;
+    friend class BeeKeeperPowerupState;
     friend class BeeNet;
 public:
     BeeKeeper(BeeField& field, Vertex* start_position);

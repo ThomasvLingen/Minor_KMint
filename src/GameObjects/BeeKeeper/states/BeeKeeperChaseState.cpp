@@ -75,10 +75,12 @@ Vertex* BeeKeeperChaseState::_get_target_vertex()
 void BeeKeeperChaseState::_set_next_state()
 {
     // TODO: Make this an autistical FSM
-    int next_state_choice = RANDOM.get_random_int(0,1);
+    int next_state_choice = RANDOM.get_random_int(0,2);
     if (next_state_choice == 0) {
         this->_context.set_state(new BeeKeeperReturnState(this->_context));
     } else if (next_state_choice == 1) {
         this->_context.set_state(new BeeKeeperLostItState(this->_context));
+    } else if (next_state_choice == 2) {
+        this->_context.set_state(new BeeKeeperPowerupState(this->_context));
     }
 }

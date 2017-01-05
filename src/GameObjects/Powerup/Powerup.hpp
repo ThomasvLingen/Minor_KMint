@@ -17,12 +17,12 @@ public:
 
     Vertex* current_position;
 
+    void jump_to_random_vector();
+
     virtual void Update(float deltaTime) override;
 
 private:
     BeeField& _garfield;
-
-    void _jump_to_random_vector();
 };
 
 

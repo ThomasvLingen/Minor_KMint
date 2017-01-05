@@ -12,7 +12,7 @@ Powerup::Powerup(BeeField& field)
     this->SetTexture(this->mApplication->LoadTexture("bij.png"));
     this->SetSize(50, 50);
 
-    this->_jump_to_random_vector();
+    this->jump_to_random_vector();
 }
 
 void Powerup::Update(float deltaTime)
@@ -24,7 +24,7 @@ void Powerup::Update(float deltaTime)
     );
 }
 
-void Powerup::_jump_to_random_vector()
+void Powerup::jump_to_random_vector()
 {
     this->current_position = RANDOM.choice(this->_garfield.field.get_vertices());
 }
