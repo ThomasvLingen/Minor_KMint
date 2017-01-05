@@ -11,7 +11,7 @@ Bee::Bee(BeeField& beeField, double max_speed, CoordinateDouble pos)
 : Vehicle(beeField, max_speed, pos)
 , _field(beeField)
 {
-    this->SetTexture(mApplication->LoadTexture("taco.png"));
+    this->SetTexture(mApplication->LoadTexture("bij.png"));
     this->SetSize(40, 40);
 }
 
