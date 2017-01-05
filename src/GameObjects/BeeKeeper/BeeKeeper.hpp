@@ -20,6 +20,7 @@
 #include "BeeNet.hpp"
 #include "states/BeeKeeperReturnState.hpp"
 #include "states/BeeKeeperPowerupState.hpp"
+#include "states/BeeKeeperSuperState.hpp"
 
 
 using std::vector;
@@ -33,6 +34,7 @@ class BeeKeeper : public IGameObject {
     friend class BeeKeeperChaseState;
     friend class BeeKeeperReturnState;
     friend class BeeKeeperPowerupState;
+    friend class BeeKeeperSuperState;
     friend class BeeNet;
 public:
     BeeKeeper(BeeField& field, Vertex* start_position);
@@ -51,7 +53,9 @@ public:
     void set_state(BeeKeeperState* next_state);
 
 private:
-    const int speed = 100;
+    const int normal_speed = 100;
+    const int super_speed = normal_speed * 3;
+    int speed = normal_speed;
 
     std::deque<Vertex*> _path;
     BeeKeeperState* _current_state;
@@ -69,6 +73,9 @@ private:
     Bee* _get_closest_bee();
 
     void _draw_target_vert();
+
+    void _engage_super_mode();
+    void _disengage_super_mode();
 };
 
 

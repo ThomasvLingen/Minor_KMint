@@ -123,3 +123,15 @@ void BeeKeeper::set_state(BeeKeeperState* next_state)
 {
     this->_current_state = next_state;
 }
+
+void BeeKeeper::_engage_super_mode()
+{
+    this->speed = this->super_speed;
+    this->SetTexture(mApplication->LoadTexture("super_imker.png"));
+}
+
+void BeeKeeper::_disengage_super_mode()
+{
+    this->speed = this->normal_speed;
+    this->SetTexture(mApplication->LoadTexture("imker.png"));
+}

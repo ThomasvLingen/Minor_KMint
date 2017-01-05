@@ -108,6 +108,8 @@ void BeeNet::lose_bee()
 {
     if (this->caught_bees.size() > 0) {
         this->caught_bees[0]->get_set_free(*this);
+
+        std::cout << "Net contains " << this->bees_in_net() << " bees." << std::endl;
     }
 }
 

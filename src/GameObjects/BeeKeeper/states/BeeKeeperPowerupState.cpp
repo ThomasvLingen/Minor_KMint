@@ -26,7 +26,7 @@ void BeeKeeperPowerupState::update(float delta_time)
         } else {
             // Hey, the path is empty and we've arrived at the target vector!
             this->_arrived_at_powerup();
-            this->_context.set_state(new BeeKeeperChaseState(this->_context));
+            this->_context.set_state(new BeeKeeperSuperState(this->_context));
         }
     } else {
         this->_context._step_towards_target(delta_time);

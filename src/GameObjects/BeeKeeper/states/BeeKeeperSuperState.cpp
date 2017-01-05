@@ -1,34 +1,31 @@
 //
-// Created by mafn on 12/21/16.
+// Created by mafn on 1/5/17.
 //
 
+#include <deque>
 #include <iostream>
-#include "BeeKeeperChaseState.hpp"
-#include "../../BeeKeeper/BeeKeeper.hpp"
-#include "../../../graph/BeeField.hpp"
+#include "BeeKeeperSuperState.hpp"
 #include "../../../Pathfinding/Pathfinding.hpp"
-#include "../../../RandomUtil.hpp"
+#include "../BeeKeeper.hpp"
+#include "../../../graph/BeeField.hpp"
 
-BeeKeeperChaseState::BeeKeeperChaseState(BeeKeeper& context)
+BeeKeeperSuperState::BeeKeeperSuperState(BeeKeeper& context)
 : BeeKeeperState(context)
 {
-    this->name = "Beekeeper chase state";
+    this->_context._engage_super_mode();
 
     this->_recalculate_path();
     this->_context._target_next_vert_in_path();
 }
 
-void BeeKeeperChaseState::update(float delta_time)
+void BeeKeeperSuperState::update(float delta_time)
 {
-    // std::cout << "pos [" << this->_context.current_position.x << "," << this->_context.current_position.y << "]" << std::endl;
-    // std::cout << "target [" << this->_context.target_position.x << "," << this->_context.target_position.y << "]" << std::endl;
-
     this->_context.net.catch_bees_in_range(this->_max_bees_in_net);
 
     if (this->_context.current_position == this->_context.target_position) {
         this->_context._arrive_at_target(this->_context.target_vertex);
 
-        if (this->_context.net.bees_in_net() >= this->_max_bees_in_net) {
+        if (this->_context.net.bees_in_net() >= this->_max_bees_in_net || this->_context.field.bees.size() == 0) {
             this->_set_next_state();
             return;
         }
@@ -43,7 +40,7 @@ void BeeKeeperChaseState::update(float delta_time)
     }
 }
 
-void BeeKeeperChaseState::_recalculate_path()
+void BeeKeeperSuperState::_recalculate_path()
 {
     Vertex* target = this->_get_target_vertex();
 
@@ -53,7 +50,7 @@ void BeeKeeperChaseState::_recalculate_path()
     }
 }
 
-Vertex* BeeKeeperChaseState::_get_target_vertex()
+Vertex* BeeKeeperSuperState::_get_target_vertex()
 {
     Bee* closest_bee = this->_context._get_closest_bee();
 
@@ -72,20 +69,8 @@ Vertex* BeeKeeperChaseState::_get_target_vertex()
     }
 }
 
-void BeeKeeperChaseState::_set_next_state()
+void BeeKeeperSuperState::_set_next_state()
 {
-    if (this->_context.field.bees.size() > 0) {
-        // TODO: Make this an autistical FSM
-        int next_state_choice = RANDOM.get_random_int(0,2);
-        // int next_state_choice = 2;
-        if (next_state_choice == 0) {
-            this->_context.set_state(new BeeKeeperReturnState(this->_context));
-        } else if (next_state_choice == 1) {
-            this->_context.set_state(new BeeKeeperLostItState(this->_context));
-        } else if (next_state_choice == 2) {
-            this->_context.set_state(new BeeKeeperPowerupState(this->_context));
-        }
-    } else {
-        this->_context.set_state(new BeeKeeperReturnState(this->_context));
-    };
+    this->_context._disengage_super_mode();
+    this->_context.set_state(new BeeKeeperReturnState(this->_context));
 }
