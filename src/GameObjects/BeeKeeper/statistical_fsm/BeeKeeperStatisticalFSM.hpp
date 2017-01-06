@@ -32,16 +32,23 @@ public:
     virtual void Update(float deltaTime) override;
 
     BeeKeeperState* get_next_state();
+    void adjust_fsmlets(int bees_caught);
 
 private:
     BeeKeeper& _context;
     const int start_weight = 10;
 
     vector<BeeKeeperStatisticalFSMlet> _FSMlets;
+    int _last_used_fsmlet_index = -1;
+    int _fsmlet_start_timestamp = -1;
+    vector<double> time_per_bee_averages;
 
     vector<int> _get_FSMlet_weights();
     string _get_FSMlet_weight_percentage(BeeKeeperStatisticalFSMlet& fsmlet);
     int _get_total_weight();
+
+    double average_time_per_bee();
+    bool better_than_average(double time_per_bee);
 };
 
 

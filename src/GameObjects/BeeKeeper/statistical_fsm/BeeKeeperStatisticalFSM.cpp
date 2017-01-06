@@ -40,8 +40,34 @@ BeeKeeperStatisticalFSM::BeeKeeperStatisticalFSM(BeeKeeper& context)
 BeeKeeperState* BeeKeeperStatisticalFSM::get_next_state()
 {
     int FSMlet_index = RANDOM.get_weighted_int(this->_get_FSMlet_weights());
+    this->_last_used_fsmlet_index = FSMlet_index;
+    this->_fsmlet_start_timestamp = this->mApplication->GetTimeSinceStartedMS();
 
     return this->_FSMlets[FSMlet_index].get_state();
+}
+
+void BeeKeeperStatisticalFSM::adjust_fsmlets(int bees_caught)
+{
+    if (bees_caught == 0) {
+        this->_FSMlets[this->_last_used_fsmlet_index].weight -= 1;
+        return;
+    }
+
+    int now = this->mApplication->GetTimeSinceStartedMS();
+    int diff = now - this->_fsmlet_start_timestamp;
+
+    double new_average = diff / bees_caught;
+
+    if (this->time_per_bee_averages.size() > 0) {
+        if (this->better_than_average(new_average)) {
+            this->_FSMlets[this->_last_used_fsmlet_index].weight += 1;
+        } else {
+            this->_FSMlets[this->_last_used_fsmlet_index].weight -= 1;
+        }
+    }
+
+    this->time_per_bee_averages.push_back(new_average);
+
 }
 
 vector<int> BeeKeeperStatisticalFSM::_get_FSMlet_weights()
@@ -93,4 +119,20 @@ void BeeKeeperStatisticalFSM::Draw()
 void BeeKeeperStatisticalFSM::Update(float deltaTime)
 {
     UNUSED(deltaTime);
+}
+
+double BeeKeeperStatisticalFSM::average_time_per_bee()
+{
+    double total = 0;
+
+    for (double time_per_bee : this->time_per_bee_averages) {
+        total += time_per_bee;
+    }
+
+    return total / this->time_per_bee_averages.size();
+}
+
+bool BeeKeeperStatisticalFSM::better_than_average(double time_per_bee)
+{
+    return time_per_bee > this->average_time_per_bee();
 }

@@ -39,6 +39,7 @@ void BeeKeeperReturnState::_set_path_to_home()
 
 void BeeKeeperReturnState::_returned_home()
 {
+    this->_context.fsm.adjust_fsmlets(this->_context.net.caught_bees.size());
     this->_context.net.clear();
     this->_context.net.reset_size();
 }
