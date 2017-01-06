@@ -29,10 +29,12 @@ public:
     void lose_bee();
 
     void clear();
+    void reset_size();
     size_t bees_in_net();
 
 private:
     const Color _draw_colour = { 0x0, 0x0, 0xFF, 0x80};
+    const int _net_start_radius = 10;
     const int _net_growth = 10;
     const int _net_growth_interval_ms = 1000;
 

@@ -11,7 +11,7 @@
 
 BeeNet::BeeNet(BeeKeeper& context)
 : _context(context)
-, _radius(10)
+, _radius(this->_net_start_radius)
 , _last_growth_timestamp(this->mApplication->GetTimeSinceStartedMS())
 {
 
@@ -99,6 +99,9 @@ size_t BeeNet::bees_in_net()
 
 void BeeNet::clear()
 {
+    // We dump bees in BeeField::bees_out_of_game
+    vector<Bee*>& target = this->_context.field.bees_out_of_game;
+    target.insert(target.end(), this->caught_bees.begin(), this->caught_bees.end());
     this->caught_bees.clear();
 }
 
@@ -112,4 +115,9 @@ void BeeNet::lose_bee()
 CoordinateDouble BeeNet::get_position()
 {
     return this->_context.current_position;
+}
+
+void BeeNet::reset_size()
+{
+    this->_radius = this->_net_start_radius;
 }

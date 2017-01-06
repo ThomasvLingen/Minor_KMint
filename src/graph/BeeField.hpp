@@ -23,13 +23,14 @@ public:
     Graph field;
     BeeKeeper* beekeeper;
     vector<Bee*> bees;
+    vector<Bee*> bees_out_of_game;
     Powerup* powerup;
     Vertex* home_vector = nullptr;
 
 
 private:
     const int _vertex_draw_width = 8;
-    const int _num_of_bees = 50;
+    const size_t _num_of_bees = 50;
 
     SDL_Texture* _bg_image;
 
@@ -39,6 +40,8 @@ private:
     void _draw_vertices();
     void _draw_edges();
     void _draw_background();
+
+    void _reset_bees();
 };
 
 

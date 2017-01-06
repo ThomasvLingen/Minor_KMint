@@ -13,7 +13,7 @@ BeeField::BeeField()
     this->_init_field();
     this->SetSize(600, 600);
 
-    for (int i = 0 ; i < this->_num_of_bees; i++) {
+    for (size_t i = 0 ; i < this->_num_of_bees; i++) {
         this->bees.push_back(
             new Bee(
                 *this, 0.2,
@@ -419,4 +419,20 @@ void BeeField::Update(float deltaTime)
 {
     UNUSED(deltaTime)
     // AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+
+    if (this->bees_out_of_game.size() == this->_num_of_bees) {
+        this->_reset_bees();
+    }
+}
+
+void BeeField::_reset_bees()
+{
+    for (Bee* bee : this->bees_out_of_game) {
+        bee->SetActive(true);
+        bee->pos = {(double)RANDOM.get_random_int(0,this->mWidth), (double)RANDOM.get_random_int(0, this->mHeight)};
+
+        this->bees.push_back(bee);
+    }
+
+    this->bees_out_of_game.clear();
 }

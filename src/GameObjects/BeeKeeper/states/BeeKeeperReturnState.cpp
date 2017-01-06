@@ -40,4 +40,5 @@ void BeeKeeperReturnState::_set_path_to_home()
 void BeeKeeperReturnState::_returned_home()
 {
     this->_context.net.clear();
+    this->_context.net.reset_size();
 }
