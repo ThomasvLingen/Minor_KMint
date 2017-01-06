@@ -10,7 +10,11 @@ namespace Util
 {
     RandomUtil::RandomUtil()
     {
-        _generator.seed(time(0));
+//        time_t timestamp = time(0);
+
+//        std::cout << timestamp << std::endl;
+
+        _generator.seed(1483705050);
         this->get_random_int(0, 100); // This is not suspicious at all
     }
 

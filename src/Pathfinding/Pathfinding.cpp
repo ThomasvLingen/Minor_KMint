@@ -2,6 +2,7 @@
 // Created by mafn on 11/25/16.
 //
 
+#include <cstdlib>
 #include "Pathfinding.hpp"
 
 vector<Vertex*> Pathfinding::astar(Graph& field, Vertex* start, Vertex* end)
@@ -20,6 +21,10 @@ vector<Vertex*> Pathfinding::astar(Graph& field, Vertex* start, Vertex* end)
     });
 
     while (!open_list.empty()) {
+        if (open_list.size() > 5000) {
+            abort();
+        }
+
         AStar_Vertex* q = Pathfinding::_get_lowest_cost_vert(open_list);
         open_list.remove(q);
         // Search neighbours (parent becomes q)
