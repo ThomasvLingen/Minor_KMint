@@ -15,7 +15,7 @@ Steering::Steering(Vehicle& _vehicle)
 VectorDouble Steering::calculate()
 {
     this->tag_neighbours();
-    return (this->seperation() + this->evade() * 5);
+    return (this->seperation() + this->evade() * 10);
 }
 
 void Steering::tag_neighbours()

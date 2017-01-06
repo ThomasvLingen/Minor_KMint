@@ -14,7 +14,7 @@ namespace Util
 
 //        std::cout << timestamp << std::endl;
 
-        _generator.seed(1483705050);
+        _generator.seed(1483707067);
         this->get_random_int(0, 100); // This is not suspicious at all
     }
 
