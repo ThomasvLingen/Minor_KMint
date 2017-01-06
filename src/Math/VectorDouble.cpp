@@ -27,7 +27,12 @@ VectorDouble::VectorDouble(CoordinateDouble obj)
 
 VectorDouble VectorDouble::normalise()
 {
-    return this->truncate(1);
+    double length = this->get_length();
+
+    return VectorDouble {
+        (length == 0) ? this->x : this->x / length,
+        (length == 0) ? this->y : this->y / length
+    };
 }
 
 double VectorDouble::get_length()
@@ -67,14 +72,10 @@ VectorDouble VectorDouble::operator-(VectorDouble other)
 
 VectorDouble VectorDouble::truncate(double value)
 {
-    double length = this->get_length();
-    double div_value = length / value;
-
-
-    return VectorDouble {
-        (div_value == 0) ? this->x : this->x / div_value,
-        (div_value == 0) ? this->y : this->y / div_value
-    };
+    if (this->get_length() > value) {
+        return this->normalise() * value;
+    }
+    return *this;
 }
 
 VectorDouble VectorDouble::perpendicular()
