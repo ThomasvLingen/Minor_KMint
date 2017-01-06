@@ -5,7 +5,7 @@
 #ifndef MINOR_CPP1_RANDOMUTIL_HPP
 #define MINOR_CPP1_RANDOMUTIL_HPP
 
-#define RANDOM Util::RandomUtil::get_instance()
+#define RANDOM ::Util::RandomUtil::get_instance()
 
 #include <random>
 #include <ctime>
