@@ -21,6 +21,7 @@
 #include "states/BeeKeeperReturnState.hpp"
 #include "states/BeeKeeperPowerupState.hpp"
 #include "states/BeeKeeperSuperState.hpp"
+#include "statistical_fsm/BeeKeeperStatisticalFSM.hpp"
 
 
 using std::vector;
@@ -62,6 +63,7 @@ private:
 
     std::deque<Vertex*> _path;
     BeeKeeperState* _current_state;
+    BeeKeeperStatisticalFSM _fsm;
 
     void _step_towards_target(double dt);
     void _apply_vector(VectorDouble to_apply);
