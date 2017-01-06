@@ -271,7 +271,7 @@ void BeeField::_init_field()
     this->field.add_edge(new Edge(vertex107, vertex109));
     this->field.add_edge(new Edge(vertex109, vertex112));
     this->field.add_edge(new Edge(vertex112, vertex111));
-    this->field.add_edge(new Edge(vertex111, vertex111));
+    // this->field.add_edge(new Edge(vertex111, vertex111)); Damnit, Paul
     this->field.add_edge(new Edge(vertex113, vertex112));
     this->field.add_edge(new Edge(vertex113, vertex114));
     this->field.add_edge(new Edge(vertex114, vertex115));
