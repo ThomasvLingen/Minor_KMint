@@ -22,46 +22,34 @@ VectorDouble Steering::calculate()
 
     current_force = this->evade(this->_vehicle.world.beekeeper->current_position)
         * 5;
-    if(this->_vehicle.ja)
-        std::cout << "Evade" << current_force.get_length() << std::endl;
     if (!this->accumulate_force(total_force, current_force)) {
         return total_force;
     }
 
     current_force = this->seperation()
         * 2;
-    if(this->_vehicle.ja)
-        std::cout << "Seperation " << current_force.get_length() << std::endl;
     if (!this->accumulate_force(total_force, current_force)) {
         return total_force;
     }
 
     current_force = this->cohesion()
         * 0.5;
-    if(this->_vehicle.ja)
-        std::cout << "Cohesion " << current_force.get_length() << std::endl;
     if (!this->accumulate_force(total_force, current_force)) {
         return total_force;
     }
 
     current_force = this->allignment()
         * 0.5;
-    if(this->_vehicle.ja)
-        std::cout << "Allignment " << current_force.get_length() << std::endl;
     if (!this->accumulate_force(total_force, current_force)) {
         return total_force;
     }
 
     current_force = this->wander()
         * 0.3;
-    if(this->_vehicle.ja)
-        std::cout << "Wander " << current_force.get_length() << std::endl;
     if (!this->accumulate_force(total_force, current_force)) {
         return total_force;
     }
 
-    if(this->_vehicle.ja)
-        std::cout << "Total " << total_force.get_length() << std::endl;
     return total_force;
 
 //    return (
