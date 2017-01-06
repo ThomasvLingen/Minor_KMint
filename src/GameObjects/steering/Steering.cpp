@@ -21,44 +21,36 @@ VectorDouble Steering::calculate()
     VectorDouble current_force {0,0};
 
     current_force = this->evade(this->_vehicle.world.beekeeper->current_position)
-        * 5;
+        * 15;
     if (!this->accumulate_force(total_force, current_force)) {
         return total_force;
     }
 
     current_force = this->seperation()
-        * 2;
-    if (!this->accumulate_force(total_force, current_force)) {
-        return total_force;
-    }
-
-    current_force = this->cohesion()
-        * 0.5;
+        * 100;
     if (!this->accumulate_force(total_force, current_force)) {
         return total_force;
     }
 
     current_force = this->allignment()
-        * 0.5;
+        * 1;
     if (!this->accumulate_force(total_force, current_force)) {
         return total_force;
     }
 
-    current_force = this->wander()
+    current_force = this->cohesion()
         * 0.3;
     if (!this->accumulate_force(total_force, current_force)) {
         return total_force;
     }
 
-    return total_force;
+    current_force = this->wander()
+        * 0.1;
+    if (!this->accumulate_force(total_force, current_force)) {
+        return total_force;
+    }
 
-//    return (
-//        this->seperation() * 2.0
-//        + this->allignment() * 1.5
-//        + this->cohesion() * 0.3
-//        + this->wander() * 0.3
-//        + this->evade(this->_vehicle.world.beekeeper->current_position) * 5
-//    ).truncate(this->_vehicle.max_force);
+    return total_force;
 }
 
 void Steering::tag_neighbours()
