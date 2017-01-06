@@ -73,8 +73,6 @@ void BeeNet::catch_bees_in_range(int max_bees_in_net)
 void BeeNet::_catch_bee(Bee* to_catch)
 {
     to_catch->get_caught(*this);
-
-    std::cout << "Net contains " << this->bees_in_net() << " bees." << std::endl;
 }
 
 vector<Bee*> BeeNet::_get_bees_in_net_range()
@@ -108,8 +106,6 @@ void BeeNet::lose_bee()
 {
     if (this->caught_bees.size() > 0) {
         this->caught_bees[0]->get_set_free(*this);
-
-        std::cout << "Net contains " << this->bees_in_net() << " bees." << std::endl;
     }
 }
 

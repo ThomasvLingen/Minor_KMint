@@ -57,6 +57,9 @@ private:
     const int super_speed = normal_speed * 3;
     int speed = normal_speed;
 
+    const Color _white = {0xFF, 0xFF, 0xFF, 0xFF};
+    const Color _black = {0,    0,    0,    0xFF};
+
     std::deque<Vertex*> _path;
     BeeKeeperState* _current_state;
 
@@ -73,6 +76,7 @@ private:
     Bee* _get_closest_bee();
 
     void _draw_target_vert();
+    void _draw_beecount();
 
     void _engage_super_mode();
     void _disengage_super_mode();

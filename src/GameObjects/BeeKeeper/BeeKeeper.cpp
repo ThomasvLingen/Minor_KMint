@@ -26,6 +26,7 @@ void BeeKeeper::Draw()
     IGameObject::Draw();
 
     this->_draw_target_vert();
+    this->_draw_beecount();
 }
 
 void BeeKeeper::Update(float deltaTime)
@@ -118,6 +119,17 @@ void BeeKeeper::_draw_target_vert()
         this->mApplication->DrawCircle(last_vert_in_path->coordinates.x, last_vert_in_path->coordinates.y, 8, true);
     }
 }
+
+void BeeKeeper::_draw_beecount()
+{
+    int num_of_bees = this->net.caught_bees.size();
+
+    this->mApplication->SetColor(this->_white);
+    this->mApplication->DrawRect(this->current_position.x - 10, this->current_position.y - 60, 20, 20, true);
+    this->mApplication->SetColor(this->_black);
+    this->mApplication->DrawText(std::to_string(num_of_bees), this->current_position.x, this->current_position.y - 50);
+}
+
 
 void BeeKeeper::set_state(BeeKeeperState* next_state)
 {
