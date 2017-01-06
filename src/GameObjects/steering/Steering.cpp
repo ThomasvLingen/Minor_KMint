@@ -27,7 +27,7 @@ VectorDouble Steering::calculate()
     }
 
     current_force = this->seperation()
-        * 100;
+        * 85;
     if (!this->accumulate_force(total_force, current_force)) {
         return total_force;
     }
