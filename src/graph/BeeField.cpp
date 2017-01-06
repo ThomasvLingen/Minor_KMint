@@ -16,7 +16,7 @@ BeeField::BeeField()
     for (size_t i = 0 ; i < this->_num_of_bees; i++) {
         this->bees.push_back(
             new Bee(
-                *this, 0.2,
+                *this, 150,
                 {(double)RANDOM.get_random_int(0,this->mWidth), (double)RANDOM.get_random_int(0, this->mHeight)}
             )
         );
