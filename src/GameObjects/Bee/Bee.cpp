@@ -11,14 +11,14 @@ Bee::Bee(BeeField& beeField, double max_speed, CoordinateDouble pos)
 : Vehicle(beeField, max_speed, pos)
 , _field(beeField)
 {
-    this->SetTexture(mApplication->LoadTexture("taco.png"));
+    this->SetTexture(mApplication->LoadTexture("bij.png"));
     this->SetSize(40, 40);
 }
 
 void Bee::Update(float deltaTime)
 {
     if (this->mIsActive) {
-        Vehicle::Move(deltaTime * 1000);
+        Vehicle::Move(deltaTime);
         this->SetOffset((uint32_t)this->pos.x, (uint32_t)this->pos.y);
     }
 }
