@@ -8,7 +8,7 @@
 #include "graph/BeeField.hpp"
 
 const int screen_width = 600;
-const int screen_height = 600;
+const int screen_height = 650;
 
 int main()
 {

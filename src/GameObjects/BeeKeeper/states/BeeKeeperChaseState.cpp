@@ -75,7 +75,7 @@ Vertex* BeeKeeperChaseState::_get_target_vertex()
 void BeeKeeperChaseState::_set_next_state()
 {
     if (this->_context.field.bees.size() > 0) {
-        this->_context.set_state(this->_context._fsm.get_next_state());
+        this->_context.set_state(this->_context.fsm.get_next_state());
     } else {
         this->_context.set_state(new BeeKeeperReturnState(this->_context));
     };

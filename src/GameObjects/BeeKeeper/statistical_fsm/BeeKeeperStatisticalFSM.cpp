@@ -7,6 +7,7 @@
 #include "../states/BeeKeeperLostItState.hpp"
 #include "../states/BeeKeeperPowerupState.hpp"
 #include "../../../RandomUtil.hpp"
+#include "../../../UnusedMacro.hpp"
 
 BeeKeeperStatisticalFSM::BeeKeeperStatisticalFSM(BeeKeeper& context)
 : _context(context)
@@ -52,4 +53,44 @@ vector<int> BeeKeeperStatisticalFSM::_get_FSMlet_weights()
     }
 
     return weights;
+}
+
+string BeeKeeperStatisticalFSM::_get_FSMlet_weight_percentage(BeeKeeperStatisticalFSMlet& fsmlet)
+{
+    double weight_percentage = ((double)fsmlet.weight / (double)this->_get_total_weight()) * 100;
+
+    return std::to_string(weight_percentage) + "%";
+}
+
+int BeeKeeperStatisticalFSM::_get_total_weight()
+{
+    int total_weight = 0;
+
+    for (auto& fsmlet : this->_FSMlets) {
+        total_weight += fsmlet.weight;
+    }
+
+    return total_weight;
+}
+
+void BeeKeeperStatisticalFSM::Draw()
+{
+    this->mApplication->SetColor({0, 0, 0, 0xFF});
+
+    int draw_x = 300;
+    int draw_y = 610;
+
+    for (auto& FSMlet : this->_FSMlets) {
+        this->mApplication->DrawText(
+            FSMlet.name + ": "  +this->_get_FSMlet_weight_percentage(FSMlet),
+            draw_x,draw_y
+        );
+
+        draw_y += 15;
+    }
+}
+
+void BeeKeeperStatisticalFSM::Update(float deltaTime)
+{
+    UNUSED(deltaTime);
 }

@@ -48,6 +48,8 @@ public:
 
     BeeNet net;
 
+    BeeKeeperStatisticalFSM fsm;
+
     virtual void Draw() override;
     virtual void Update(float deltaTime) override;
 
@@ -63,7 +65,6 @@ private:
 
     std::deque<Vertex*> _path;
     BeeKeeperState* _current_state;
-    BeeKeeperStatisticalFSM _fsm;
 
     void _step_towards_target(double dt);
     void _apply_vector(VectorDouble to_apply);

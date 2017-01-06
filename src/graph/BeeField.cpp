@@ -31,6 +31,7 @@ void BeeField::_init_renderables()
 {
     this->mApplication->AddRenderable(this);
     this->mApplication->AddRenderable(&(this->beekeeper->net));
+    this->mApplication->AddRenderable(&(this->beekeeper->fsm));
     this->mApplication->AddRenderable(this->beekeeper);
     this->mApplication->AddRenderable(this->powerup);
 

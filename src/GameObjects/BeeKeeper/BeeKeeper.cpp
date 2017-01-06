@@ -14,7 +14,7 @@ BeeKeeper::BeeKeeper(BeeField& field, Vertex* start_position)
 , current_position(start_position->coordinates)
 , target_position(start_position->coordinates)
 , net(*this)
-, _fsm(*this)
+, fsm(*this)
 {
     this->SetTexture(mApplication->LoadTexture("imker.png"));
     this->SetSize(40, 40);
