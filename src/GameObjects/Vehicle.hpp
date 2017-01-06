@@ -25,8 +25,8 @@ protected:
     VectorDouble side;
 
     double max_speed;
-    double max_vision_range = 30;
-    double max_force = 10;
+    double max_vision_range = 50;
+    double max_force = 8;
 //    double max_turn_rate;
 
     double wander_radius = 3;
@@ -34,10 +34,12 @@ protected:
     double wander_jitter = 0.5;
     VectorDouble wander_target;
 
+    double weight = 0.1;
+
     BeeField& world;
     Steering* behaviour;
 
-    void Move(int delta_time);
+    void Move(float delta_time);
 };
 
 

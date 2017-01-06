@@ -7,12 +7,13 @@
 #include "Vehicle.hpp"
 #include "../graph/BeeField.hpp"
 
-void Vehicle::Move(int delta_time)
+void Vehicle::Move(float delta_time)
 {
     VectorDouble steering_force = behaviour->calculate();
-    VectorDouble accel = steering_force; // no mass calculation
+    VectorDouble accel = steering_force / this->weight;
 
     this->velocity = this->velocity + (accel * delta_time); // writing += operators is for losers
+
     if (this->velocity.get_length() > 0.00000001) { //check for div/0
         this->velocity = this->velocity.truncate(this->max_speed);
     }
