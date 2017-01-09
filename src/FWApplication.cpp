@@ -99,7 +99,7 @@ bool FWApplication::IsRunning()
 std::string FWApplication::GetRelativePath(const std::string & path) const
 {
     std::string basePath = SDL_GetBasePath();
-    return basePath + ".." + PATH_SEP + path; //  + PATH_SEP
+    return basePath + PATH_SEP + path; //  + PATH_SEP
     //size_t pos = basePath.rfind("Debug");
     //return basePath.substr(0, basePath.rfind("Debug")) + path + PATH_SEP; //  + "resources" + PATH_SEP
 }
