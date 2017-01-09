@@ -62,7 +62,7 @@ void BeeKeeperStatisticalFSM::adjust_fsmlets(int bees_caught)
         if (this->better_than_average(new_average)) {
             this->_FSMlets[this->_last_used_fsmlet_index].weight += 1;
         } else {
-            this->_FSMlets[this->_last_used_fsmlet_index].weight -= 1;
+            // this->_FSMlets[this->_last_used_fsmlet_index].weight -= 1;
         }
     }
 
