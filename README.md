@@ -16,7 +16,7 @@ sudo apt-get install build-essential libsdl2-dev libsdl2-ttf-dev libsdl2-gfx-dev
 ```
 
 A `Makefile` is included with the program for easy compilation. To compile the program,
-simply type `make` in the project directory.
+simply run `make` in the project directory.
 
 The compiled binary is then stored in `build/KMint`. It can then be easily run by
 typing `make run` in the project root.
